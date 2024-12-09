@@ -1,45 +1,47 @@
 import React, {useState,useEffect} from 'react';
 import './App.css';
-import { Course } from './interfaces';
-import CourseItem from './components/CourseItem';
-import NewCourseForm from './components/NewCourseForm';
-import CoursesService from './services/CoursesService';
+import { Professor } from './interfaces';
+import ProfessorItem from './components/ProfessorItem';
+import NewProfessorForm from './components/NewProfessorForm';
+import ProfessorService from './services/ProfessorService';
 
 const App = () => {
-  const [courses, setCourses] = useState<Course[]>([]);
+  const [professor, setProfessor] = useState<Professor[]>([]);
   const [formVisible, setFormVisible] = useState<boolean>(false);
 
   const toggleFormVisible = () =>{
     setFormVisible(!formVisible);
   };
 
-  const fetchCourses = () => {
-    CoursesService.fetchCourses()
-    .then(courses => {
-      setCourses(courses);
+  const fetchProfessor = () => {
+    ProfessorService.fetchProfessor()
+    .then(professor => {
+      setProfessor(professor);
     });
   };
 
-  const handleNewCourseCreated = (course: Course) => {
-    fetchCourses();
+  const handleNewProfessorCreated = (professor: Professor) => {
+    fetchProfessor();
     setFormVisible(false);
   }
 
 
   useEffect(() => {
-    fetchCourses();
+    fetchProfessor();
   },[]);
 
   return (
     <div className="App">
+      {/*
       <ul>
-      {courses.map((item) => (
-        <CourseItem key={item.id} course={item}/>
+      {professor.map((item) => (
+        <ProfessorItem key={item.id} professor={item}/>
       ))}
       </ul>
+*/}
       <button onClick={toggleFormVisible}>สร้างคอร์สใหม่โดยต้นน้ำ</button>
       {formVisible &&
-        <NewCourseForm onNewCourseCreated={handleNewCourseCreated} />
+        <NewProfessorForm onNewProfessorCreated={handleNewProfessorCreated} />
       }
     </div>
   );

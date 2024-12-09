@@ -4,9 +4,9 @@ import { AppService } from './app.service';
 //import { CoursesController} from './courses.controller';
 //import { CoursesService} from './courses.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CourseModule } from './course/course.module';
-import Course from './course/course.entity';
-import Review from './course/review.entity';
+import { ProfessorModule } from './professor/professor.module';
+import Professor from './professor/professor.entity';
+import Review from './professor/review.entity';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import Review from './course/review.entity';
       type: 'mongodb',
       url: "mongodb+srv://ProgrammerTon:1234@cluster0.z51ft.mongodb.net/",
       database: 'test1',
-      entities: [Course, Review],
+      entities: [Professor, Review],
     }),
     /*
     TypeOrmModule.forRoot({
@@ -27,8 +27,8 @@ import Review from './course/review.entity';
     }),
     */
 
-    TypeOrmModule.forFeature([Course]),
-    CourseModule
+    TypeOrmModule.forFeature([Professor]),
+    Professor
   ],
   controllers: [AppController],
   providers: [AppService],

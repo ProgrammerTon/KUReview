@@ -13,6 +13,6 @@ export class Review {
     score: number;
 
     @Column()
-    courseId: ObjectId;
+    professorId: ObjectId;
 }
 export default Review;
