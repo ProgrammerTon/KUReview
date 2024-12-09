@@ -39,7 +39,7 @@ const App = () => {
       ))}
       </ul>
 */}
-      <button onClick={toggleFormVisible}>สร้างคอร์สใหม่โดยต้นน้ำ</button>
+      <button onClick={toggleFormVisible}>เพิ่มอาจารย์</button>
       {formVisible &&
         <NewProfessorForm onNewProfessorCreated={handleNewProfessorCreated} />
       }

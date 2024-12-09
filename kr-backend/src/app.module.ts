@@ -13,7 +13,7 @@ import Review from './professor/review.entity';
     TypeOrmModule.forRoot({
       type: 'mongodb',
       url: "mongodb+srv://ProgrammerTon:1234@cluster0.z51ft.mongodb.net/",
-      database: 'test1',
+      database: 'kureview',
       entities: [Professor, Review],
     }),
     /*
@@ -28,7 +28,7 @@ import Review from './professor/review.entity';
     */
 
     TypeOrmModule.forFeature([Professor]),
-    Professor
+    ProfessorModule
   ],
   controllers: [AppController],
   providers: [AppService],
