@@ -2,7 +2,7 @@ import { Entity, Column, ObjectIdColumn } from 'typeorm';
 import { ObjectId } from 'mongodb';
 
 @Entity()
-export class Course {
+export class Professor {
     @ObjectIdColumn()
     id?: ObjectId;
 
@@ -12,4 +12,4 @@ export class Course {
     @Column()
     title: string;
 }
-export default Course;
+export default Professor;

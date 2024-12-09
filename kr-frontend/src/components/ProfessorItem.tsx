@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
-import {Course,Review} from '../interfaces';
-import CoursesService from '../services/CoursesService';
+import {Professor,Review} from '../interfaces';
+import ProfessorService from '../services/ProfessorService';
 import { clear } from 'console';
 
-type CourseItemProps = {
-    course: Course,
+type ProfessorItemProps = {
+    professor: Professor,
 };
 
-const CourseItem = (props: CourseItemProps) => {
-    const course: Course = props.course;
+const ProfessorItem = (props: ProfessorItemProps) => {
+    const professor: Professor = props.professor;
     
     const [reviewsVisible, setReviewsVisible] = useState<boolean>(false);
     const [reviews, setReviews] = useState<Review[]>([]);
@@ -16,9 +16,9 @@ const CourseItem = (props: CourseItemProps) => {
     const [newReviewScore, setNewReviewScore] = useState<number>(1);
 
     const fetchReviews = () => {
-        if (course.id){
-            CoursesService.fetchReviews(course.id)
-            .then(reviews => {
+        if (professor.id){
+            ProfessorService.fetchReviews(professor.id)
+            .then(professor => {
                 setReviews(reviews);
         });
         }
@@ -44,8 +44,8 @@ const CourseItem = (props: CourseItemProps) => {
             comments: newReviewComments,
             score: newReviewScore,
         };
-        if (course.id){
-            CoursesService.createReview(newReview, course.id)
+        if (professor.id){
+            ProfessorService.createReview(newReview, professor.id)
             .then(savedNewReview => {
                 if (savedNewReview) {
                     fetchReviews();
@@ -57,8 +57,8 @@ const CourseItem = (props: CourseItemProps) => {
     }
     const newReviewScoreOptions = [1,2,3,4,5];
     return (
-        <li className="Course">
-            {course.number} - {course.title}
+        <li className="Professor">
+            {professor.number} - {professor.title}
             &nbsp;
             <button onClick={handleReviewsVisibleToggle}>
                 {reviewsVisible ? 'hide reviews' : 'show reviews'}    
@@ -98,4 +98,4 @@ const CourseItem = (props: CourseItemProps) => {
         </li>
     );
 };
-export default CourseItem;
+export default ProfessorItem;

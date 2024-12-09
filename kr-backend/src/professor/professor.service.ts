@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateCourseDto } from './dto/create-course.dto';
+import { CreateProfessorDto } from './dto/create-professor.dto';
 import { CreateReviewDto } from './dto/create-review.dto';
-import Course from './course.entity';
+import Professor from './professor.entity';
 import Review from './review.entity';
 import { ObjectId } from 'mongodb';
 
 @Injectable()
-export class CoursesService {
+export class ProfessorService {
   constructor(
-    @InjectRepository(Course)
-    private coursesRepository: Repository<Course>,
+    @InjectRepository(Professor)
+    private professorRepository: Repository<Professor>,
     @InjectRepository(Review)
     private reviewsRepository: Repository<Review>,
   ) {}
 
-  async findAll(): Promise<Course[]> {
+  async findAll(): Promise<Professor[]> {
     /*
         this.coursesRepository.save(
             {
@@ -27,10 +27,10 @@ export class CoursesService {
         */
     //const data = await this.coursesRepository.find()
     //console.log(data)
-    return this.coursesRepository.find();
+    return this.professorRepository.find();
   }
-  async create(createCourseDto: CreateCourseDto) {
-    return this.coursesRepository.save(createCourseDto);
+  async create(createProfessorDto: CreateProfessorDto) {
+    return this.professorRepository.save(createProfessorDto);
   }
   async findAllReviews(): Promise<Review[]> {
     return this.reviewsRepository.find();
@@ -40,13 +40,13 @@ export class CoursesService {
         return this.reviewsRepository.find();
     }
         */
-  async findReviewById(courseId: ObjectId): Promise<Review[]> {
-    return this.reviewsRepository.find({ where: { courseId: courseId } });
+  async findReviewById(professorId: ObjectId): Promise<Review[]> {
+    return this.reviewsRepository.find({ where: { professorId: professorId } });
   }
   async createReview(createReviewDto: CreateReviewDto) {
     //const courseId = new ObjectId(createReviewDto.courseId);
     let newReview: any = {...createReviewDto};
-    newReview.courseId = new ObjectId(createReviewDto.courseId);
+    newReview.courseId = new ObjectId(createReviewDto.professorId);
     return this.reviewsRepository.save(newReview);
   }
   /*
