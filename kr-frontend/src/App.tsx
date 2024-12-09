@@ -37,7 +37,7 @@ const App = () => {
         <CourseItem key={item.id} course={item}/>
       ))}
       </ul>
-      <button onClick={toggleFormVisible}>New course</button>
+      <button onClick={toggleFormVisible}>สร้างคอร์สใหม่</button>
       {formVisible &&
         <NewCourseForm onNewCourseCreated={handleNewCourseCreated} />
       }
