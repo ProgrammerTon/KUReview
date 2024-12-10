@@ -16,7 +16,7 @@ import Review from './review.entity';
 import { ObjectId } from 'mongodb';
 
 
-@Controller('courses')
+@Controller('professor')
 export class ProfessorController {
   constructor(private professorService: ProfessorService) {}
 
