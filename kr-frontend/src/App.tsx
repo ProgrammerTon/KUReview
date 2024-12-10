@@ -6,6 +6,7 @@ import NewProfessorForm from './components/NewProfessorForm';
 import ProfessorService from './services/ProfessorService';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Pageone from './pages/pageone';
+import Authenpage from './pages/authenpage';
 
 const App = () => {
   const [professor, setProfessor] = useState<Professor[]>([]);
@@ -37,6 +38,7 @@ const App = () => {
         <nav>
           <Link to="/">Home</Link>
           <Link to="/pageone">Go to Page One</Link>
+          <Link to="/authenpage">Go to Authen</Link>
         </nav>
 
         {/* Routes */}
@@ -51,6 +53,7 @@ const App = () => {
             }
           />
           <Route path="/pageone" element={<Pageone />} />
+          <Route path="/authenpage" element={<Authenpage />} />
         </Routes>
       </div>
     </Router>
