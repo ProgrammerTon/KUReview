@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Pageone: React.FC = () => {
+const AddProfessorPage: React.FC = () => {
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>This is Template</h1>
+      <h1 style={styles.heading}>Nice Try</h1>
     </div>
   );
 };
@@ -18,4 +18,4 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
 };
 
-export default Pageone;
+export default AddProfessorPage;
